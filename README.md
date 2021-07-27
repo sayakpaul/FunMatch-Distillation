@@ -47,11 +47,11 @@ _It should be noted that none of the above training regimes showed signs of over
 All the notebooks are fully runnable on Kaggle Kernel. The only requirement is that you'd
 need a billing enabled GCP account to use GCS Buckets to store data. 
 
-* `train_bit.ipynb`: Shows how to train the teacher model. [Kaggle Kernel Notebook](https://www.kaggle.com/spsayakpaul/train-bit)
-* `train_bit_keras_tuner.ipynb`: Shows how to run hyperparameter tuning using Keras Tuner for the teacher model. [Kaggle Kernel Notebook](https://www.kaggle.com/spsayakpaul/train-bit-keras-tuner)
-* `funmatch_distillation.ipynb`: Shows an implementation of the recipes from "function matching". [Kaggle Kernel Notebook](https://www.kaggle.com/spsayakpaul/funmatch-distillation)
-
-`funmatch_distillation.ipynb` shows the distillation process. 
+|           Notebook          	|                                    Description                                   	| Kaggle Kernel 	|
+|:---------------------------:	|:--------------------------------------------------------------------------------:	|:-------------:	|
+|       `train_bit.ipynb`       	|                       Shows how to train the teacher model.                      	|      [Link](https://www.kaggle.com/spsayakpaul/train-bit)     	|
+| `train_bit_keras_tuner.ipynb` 	| Shows how to run hyperparameter tuning using<br>Keras Tuner for the teacher model. 	|      [Link](https://www.kaggle.com/spsayakpaul/train-bit-keras-tuner)     	|
+| `funmatch_distillation.ipynb` 	|         Shows an implementation of the recipes<br>from "function matching".         	|      [Link](https://www.kaggle.com/spsayakpaul/funmatch-distillation)     	|
 
 ## TFRecords and pre-trained weights
 
