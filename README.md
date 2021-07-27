@@ -22,7 +22,7 @@ storage costs and improving inference speed.
 * Teacher and student should see same images during distillation as opposed to differently
   augmented views of same images.
 * Aggressive form of [MixUp](https://arxiv.org/abs/1710.09412) as the key augmentation recipe. MixUp
-  is paired with "Inception-style" cropping.
+  is paired with "Inception-style" cropping (implemented in [this script](https://github.com/sayakpaul/FunMatch-Distillation/blob/main/crop_resize.py)).
 * A LONG training schedule for distillation. At least 1000 epochs to get good results _without_
   overfitting. The importance of a long training schedule is paramount as studied in the paper.
   
