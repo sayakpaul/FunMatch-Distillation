@@ -40,6 +40,8 @@ I have only run the experiments for 300 epochs and 1000 epochs.
 |   300  	|   81.3%   	|
 |  1000  	|   86%        	|
 
+_It should be noted that none of the above training regimes showed signs of overfitting._
+
 ## About the notebooks
 
 All the notebooks are fully runnable on Kaggle Kernel. The only requirement is that you'd
