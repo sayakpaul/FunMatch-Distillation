@@ -50,7 +50,9 @@ families. BiT stands for "Big Transfer" and it was proposed in [this paper](http
 These results are consistent with Table 4 of the [original paper](https://arxiv.org/abs/2106.05237). 
 
 _It should be noted that none of the above training regimes showed signs of overfitting. Further
-improvements can be done by training for longer._
+improvements can be done by training for longer._ The authors also showed that [Shampoo](https://github.com/google-research/google-research/tree/master/scalable_shampoo) can get to similar performance much quicker than Adam
+during distillation. So, it may very well be possible to get this performance with fewer epochs
+with Shampoo. 
 
 A few differences from the original implementation:
 
@@ -59,10 +61,6 @@ A few differences from the original implementation:
   if the number of images is even. Now, for 8 workers it will become 8 pairs. 
   This may have led to the reduced performance. We can overcome this by using `tf.roll(images, 1, axis=0)` 
   instead of `tf.reverse` in the `mixup()` function. Thanks to Lucas Beyer for pointing this out.
-
-**Note**: The authors note that [Shampoo](https://github.com/google-research/google-research/tree/master/scalable_shampoo) can
-get to similar performance much quicker than Adam during distillation. So, it may very well be possible to get this performance 
-with fewer epochs with Shampoo. 
 
 ## About the notebooks
 
