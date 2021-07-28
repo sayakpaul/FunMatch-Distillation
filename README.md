@@ -59,8 +59,10 @@ A few differences from the original implementation:
   if the number of images is even. Now, for 8 workers it will become 8 pairs. 
   This may have led to the reduced performance. We can overcome this by using `tf.roll(images, 1, axis=0)` 
   instead of `tf.reverse` in the `mixup()` function. Thanks to Lucas Beyer for pointing this out.
-* The authors note that [Shampoo](https://github.com/google-research/google-research/tree/master/scalable_shampoo) plays a direct impact on achieving better performance early
-  on during distillation. In my experiments, I used [AdamW](https://arxiv.org/pdf/1711.05101.pdf). 
+
+**Note**: The authors note that [Shampoo](https://github.com/google-research/google-research/tree/master/scalable_shampoo) can
+get to similar performance much quicker than Adam during distillation. So, it may very well be possible to get this performance 
+with fewer epochs with Shampoo. 
 
 ## About the notebooks
 
