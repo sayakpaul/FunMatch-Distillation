@@ -2,7 +2,10 @@
 TF2 implementation of knowledge distillation using the "function matching" hypothesis from the paper [Knowledge distillation:
 A good teacher is patient and consistent](https://arxiv.org/abs/2106.05237) by Beyer et al.
 
-The techniques have been demonstrated using the [Pet37 dataset](http://www.robots.ox.ac.uk/~vgg/data/pets/). 
+The techniques have been demonstrated using three datasets:
+* [Pet37 dataset](http://www.robots.ox.ac.uk/~vgg/data/pets/)
+* [Flowers102](https://www.robots.ox.ac.uk/~vgg/data/flowers/102/)
+* [Food101](https://www.vision.ee.ethz.ch/datasets_extra/food-101/)
 
 This repository provides Kaggle Kernels notebooks so that we can leverage the _free_ TPu v3-8 to run
 the long training schedules. 
@@ -28,19 +31,36 @@ storage costs and improving inference speed.
   
 ## Results
 
-First, a well-performing teacher model is generated. In this case, it's a BiT-ResNet101x3 as 
-opposed to a BiT-ResNet152x2 (used in the original paper). This model yields 90.93% top-1 accuracy
-on the test set of Pet37. The authors distill into a BiT-ResNet50 for different training regimes:
-300 epochs, 1000 epochs, 3000 epochs, etc. 
+The table below summarizes the results of my experiments. In all cases, teacher is a BiT-ResNet101x3
+model and student is a BiT-ResNet50x1. For fun, you can also try to distill into other model
+families. BiT stands for "Big Transfer" and it was proposed in [this paper](https://arxiv.org/abs/1912.11370). 
 
-I have only run the experiments for 300 epochs and 1000 epochs. 
+|   Dataset  	|    Teacher/Student    	| Top-1 Acc on Test 	| Location 	|
+|:----------:	|:---------------------:	|:-----------------:	|:--------:	|
+| Flowers102 	|        Teacher        	|       98.18%      	|   [Link](https://bit.ly/2TER9tr)   	|
+| Flowers102 	| Student (1000 epochs) 	|       81.2%       	|   [Link](https://git.io/JBO3Y)   	|
+|    Pet37   	|        Teacher        	|       90.92%      	|   [Link](https://t.ly/hAKc)   	|
+|    Pet37   	|  Student (300 epochs) 	|       81.3%       	|   [Link](https://git.io/JBO3i)   	|
+|    Pet37   	| Student (1000 epochs) 	|        86%        	|   [Link](https://git.io/JBOsv)   	|
+|   Food101  	|        Teacher        	|       85.52%      	|   [Link](https://bit.ly/3i7m9M0)   	|
+|   Food101  	|  Student (100 epochs) 	|       76.06%        	|   [Link](https://git.io/JB3Xa)   	|
 
-| **Epochs** 	| **Top-1 Acc** 	|
-|:------:	|:---------:	|
-|   300  	|   81.3%   	|
-|  1000  	|   86%        	|
+<sup>(**`Location` denotes the trained model location.**)</sup>
 
-_It should be noted that none of the above training regimes showed signs of overfitting._
+These results are consistent with Table 4 of the [original paper](https://arxiv.org/abs/2106.05237). 
+
+_It should be noted that none of the above training regimes showed signs of overfitting. Further
+improvements can be done by training for longer._
+
+A few differences from the original implementation:
+
+* The authors use BiT-ResNet152x2 as a teacher. 
+* The `mixup()` variant I used will produce a pair of duplicate images
+  if the number of images is even. Now, for 8 workers it will become 8 pairs. 
+  This may have led to the reduced performance. We can overcome this by using `tf.roll(images, 1, axis=0)` 
+  instead of `tf.reverse` in the `mixup()` function. Thanks to Lucas Beyer for pointing this out.
+* The authors note that [Shampoo](https://github.com/google-research/google-research/tree/master/scalable_shampoo) plays a direct impact on achieving better performance early
+  on during distillation. In my experiments, I used [AdamW](https://arxiv.org/pdf/1711.05101.pdf). 
 
 ## About the notebooks
 
@@ -53,14 +73,18 @@ need a billing enabled GCP account to use GCS Buckets to store data.
 | `train_bit_keras_tuner.ipynb` 	| Shows how to run hyperparameter tuning using<br>Keras Tuner for the teacher model. 	|      [Link](https://www.kaggle.com/spsayakpaul/train-bit-keras-tuner)     	|
 | `funmatch_distillation.ipynb` 	|         Shows an implementation of the recipes<br>from "function matching".         	|      [Link](https://www.kaggle.com/spsayakpaul/funmatch-distillation)     	|
 
-## TFRecords and pre-trained weights
+These are only demonstrated on the Pet37 dataset but will work out-of-the-box for the other
+datasets too. 
 
-For reproducibility, TFRecords and pre-trained model weights are provided:
+## TFRecords
 
-* [TFRecords](https://github.com/sayakpaul/FunMatch-Distillation/releases/download/v1.0.0/tfrecords_pets37.tar.gz)
-* [Teacher model (BiT-ResNet101x3)](https://www.kaggle.com/spsayakpaul/bitresnet101x3-pet37)
-* [Student model (BiT-ResNet50)](https://github.com/sayakpaul/FunMatch-Distillation/releases/download/v2.0.0/S-r50x1-128-300.tar.gz) (300 epochs)
-* [Student model (BiT-ResNet50)](https://github.com/sayakpaul/FunMatch-Distillation/releases/download/v2.0.0/S-r50x1-128-1000.tar.gz) (1000 epochs)
+For convenience, TFRecords of different datasets are provided:
+
+|   Dataset  	| TFRecords 	|
+|:----------:	|:---------:	|
+| Flowers102 	|    [Link](https://git.io/JBOlw)   	|
+|    Pet37   	|    [Link](https://git.io/JBOWr)   	|
+|   Food101  	|    [Link](https://bit.ly/3iU0ZAq)   	|
 
 ## Paper citation
 
