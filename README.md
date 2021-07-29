@@ -14,10 +14,9 @@ the long training schedules. Please refer to [this section](https://github.com/s
 
 The importance of knowledge distillation lies in its practical usefulness. With the recipes from
 "function matching", we  can now perform knowledge distillation using a principled approach
-yielding student models that can actually match the performance of their teacher models. 
-
-This essentially allows us to compress bigger models into (much) smaller ones thereby reducing 
-storage costs and improving inference speed. 
+yielding student models that can actually match the performance of their teacher models. This essentially
+allows us to compress bigger models into (much) smaller ones thereby reducing storage costs and
+improving inference speed. 
 
 ## Key ingredients
 
