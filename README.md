@@ -8,7 +8,7 @@ The techniques have been demonstrated using three datasets:
 * [Food101](https://www.vision.ee.ethz.ch/datasets_extra/food-101/)
 
 This repository provides [Kaggle Kernel notebooks](https://www.kaggle.com/kernels) so that we can leverage the _free_ TPu v3-8 to run
-the long training schedules. 
+the long training schedules. Please refer to [this section](https://github.com/sayakpaul/FunMatch-Distillation#about-the-notebooks).
 
 ## Importance 
 
