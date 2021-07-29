@@ -12,7 +12,7 @@ the long training schedules. Please refer to [this section](https://github.com/s
 
 ## Importance 
 
-The importance of this technique lies in its practical usefulness. With the recipes from
+The importance of knowledge distillation lies in its practical usefulness. With the recipes from
 "function matching", we  can now perform knowledge distillation using a principled approach
 yielding student models that can actually match the performance of their teacher models. 
 
