@@ -48,7 +48,7 @@ families. BiT stands for "Big Transfer" and it was proposed in [this paper](http
 
 These results are consistent with Table 4 of the [original paper](https://arxiv.org/abs/2106.05237). 
 
-_It should be noted that none of the above training regimes showed signs of overfitting. Further
+_It should be noted that none of the above student training regimes showed signs of overfitting. Further
 improvements can be done by training for longer._ The authors also showed that [Shampoo](https://github.com/google-research/google-research/tree/master/scalable_shampoo) can get to similar performance much quicker than Adam
 during distillation. So, it may very well be possible to get this performance with fewer epochs
 with Shampoo. 
