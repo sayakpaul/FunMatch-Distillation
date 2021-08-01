@@ -37,7 +37,7 @@ families. BiT stands for "Big Transfer" and it was proposed in [this paper](http
 |   Dataset  	|    Teacher/Student    	| Top-1 Acc on Test 	| Location 	|
 |:----------:	|:---------------------:	|:-----------------:	|:--------:	|
 | Flowers102 	|        Teacher        	|       98.18%      	|   [Link](https://bit.ly/2TER9tr)   	|
-| Flowers102 	| Student (1000 epochs) 	|       81.2%       	|   [Link](https://git.io/JBO3Y)   	|
+| Flowers102 	| Student (1000 epochs) 	|       81.02%       	|   [Link](https://git.io/JBO3Y)   	|
 |    Pet37   	|        Teacher        	|       90.92%      	|   [Link](https://t.ly/hAKc)   	|
 |    Pet37   	|  Student (300 epochs) 	|       81.3%       	|   [Link](https://git.io/JBO3i)   	|
 |    Pet37   	| Student (1000 epochs) 	|        86%        	|   [Link](https://git.io/JBOsv)   	|
