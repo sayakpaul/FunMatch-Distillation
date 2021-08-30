@@ -56,7 +56,8 @@ with Shampoo.
 
 A few differences from the original implementation:
 
-* The authors use BiT-ResNet152x2 as a teacher. 
+* The authors use BiT-ResNet152x2 as a teacher. While I didn't use this model for this project, you can find these
+  models on TensorFlow Hub. More details are available [here](https://github.com/sayakpaul/BiT-jax2tf).
 * The `mixup()` variant I used will produce a pair of duplicate images
   if the number of images is even. Now, for 8 workers it will become 8 pairs. 
   This may have led to the reduced performance. We can overcome this by using `tf.roll(images, 1, axis=0)` 
