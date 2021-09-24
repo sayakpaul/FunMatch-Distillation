@@ -1,7 +1,8 @@
 # FunMatch-Distillation
 TF2 implementation of knowledge distillation using the "function matching" hypothesis from the paper [Knowledge distillation:
 A good teacher is patient and consistent](https://arxiv.org/abs/2106.05237) by Beyer et al. Here is an 
-[accompanying blog post from keras.io](https://keras.io/examples/keras_recipes/better_knowledge_distillation/).
+[accompanying blog post from keras.io](https://keras.io/examples/keras_recipes/better_knowledge_distillation/). For its
+potential impact, this project also received the [#TFCommunitySpotlight award](https://twitter.com/TensorFlow/status/1428433434972618754).
 
 The techniques have been demonstrated using three datasets:
 * [Pet37 dataset](http://www.robots.ox.ac.uk/~vgg/data/pets/)
